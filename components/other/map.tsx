@@ -1,5 +1,6 @@
 import mapboxgl, { Marker, NavigationControl } from "mapbox-gl";
 import { useEffect, useRef } from "react";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const TOKEN =
   'pk.eyJ1Ijoic2l0YW5zaDE0NCIsImEiOiJjbWhvNTMzMWUwN3I5MmpvaHMzN3d0aDdwIn0.FWciqdZ1wqFFzs5u2dwrpw';
@@ -7,6 +8,7 @@ const TOKEN =
 export function Map() {
     const mapContainer = useRef(null);
     const mapRef = useRef<mapboxgl.Map | null>(null);
+    const markerRef = useRef<mapboxgl.Marker | null>(null);
 
     const userLocation = { lng: -79.3800, lat: 43.6550 };
     
@@ -23,15 +25,32 @@ export function Map() {
 
         mapRef.current = map;
 
-        new Marker({ color: '#1E90FF' })
+        const marker = new Marker({ color: "#1E90FF" })
             .setLngLat([userLocation.lng, userLocation.lat])
-            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText('User in Need (SL) - Live Location'))
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 })
+                    .setText("User in Need (SL) - Live Location"))
             .addTo(map);
-
+        markerRef.current = marker;
+        
         map.addControl(new NavigationControl(), 'top-right');
 
         return () => mapRef.current?.remove();
     }, []);
+
+    useEffect(() => {
+        const ws = new WebSocket("ws://localhost:8000");
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log("Received:", data);
+            
+            if (data.coords && data.coords["lat"] && markerRef.current) {
+                markerRef.current.setLngLat([data.coords["long"], data.coords["lat"]]);
+            } 
+        };
+        return () => ws.close();
+    }, []);
+
 
     return (          
         <div className="flex-grow">
