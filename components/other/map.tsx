@@ -1,7 +1,7 @@
 import mapboxgl, { Marker, NavigationControl } from "mapbox-gl";
 import { useEffect, useRef, useState } from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { IncidentCard } from "./incident-card";
+import { IncidentInfo } from "./Incident-info";
 
 const TOKEN =
   'pk.eyJ1Ijoic2l0YW5zaDE0NCIsImEiOiJjbWhvNTMzMWUwN3I5MmpvaHMzN3d0aDdwIn0.FWciqdZ1wqFFzs5u2dwrpw';
@@ -98,15 +98,8 @@ export function Map() {
               className="w-full h-[800px] rounded-xl shadow-xl border border-gray-100" 
             />
             {incidentVisible && (
-                <div className="absolute top-60 right-60 w-100 z-10">
-                    <IncidentCard
-                        title="Fire Reported"
-                        details="Emergency services are en route to the scene."
-                        location="Dundas St W & Bay St, Toronto"
-                        time="3:02 PM"
-                        severity="High"
-                        distance="200m" //assume this will be calculated by backend and return in appropriate units
-                    />
+                <div className="absolute top-50 right-60 w-100 z-10">
+                    <IncidentInfo />
                 </div>
             )}
         </div>
