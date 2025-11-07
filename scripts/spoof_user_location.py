@@ -6,7 +6,7 @@ import websockets
 
 lat = 43.6550
 lon = -79.3800
-magnitude = 0.002
+magnitude = 0.00005
 
 clients = set()
 

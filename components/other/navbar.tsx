@@ -11,7 +11,7 @@ export const Navbar = () => (
         ✶ Firefly Dashboard
       </div>
       <nav className="text-sm font-medium text-gray-600 dark:text-gray-400 ml-4">
-        Operator View | Live Feed
+        User's View | Live Feed
       </nav>
     </div>
 
@@ -20,7 +20,7 @@ export const Navbar = () => (
         <NavigationMenuItem>
           <Button variant="outline" className="flex items-center space-x-2">
             <PlayCircle className="h-4 w-4" />
-            Start Incident Simulation
+            Report Incident
           </Button>
         </NavigationMenuItem>
 
