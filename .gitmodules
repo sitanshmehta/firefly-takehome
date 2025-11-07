@@ -1,0 +1,3 @@
+[submodule "components/timeline"]
+	path = components/timeline
+	url = https://github.com/timDeHof/shadcn-timeline.git
