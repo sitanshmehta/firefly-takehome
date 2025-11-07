@@ -9,8 +9,8 @@ export default function Home() {
       <header className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
         <Navbar />
       </header>
-      <main className="mx-auto w-full max-w-7xl px-6 py-8">
-        <h1 className="text-3xl font-bold mb-5 text-gray-800">Live Incident Mapping</h1>        
+      <main className="ml-11 w-full max-w-5xl px-6 py-8 align-left">
+        <h1 className="text-2xl font-bold mb-5 text-gray-800">Live Incident Mapping</h1>        
         <div className="flex gap-6">
           <Map/>
         </div>
