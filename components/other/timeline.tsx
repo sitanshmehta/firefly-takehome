@@ -1,5 +1,5 @@
-import { TimelineLayout } from "@/shadcn-timeline/src/components/timeline";
 import { Flame, Bell, Truck, FireExtinguisher, ClipboardCheck } from "lucide-react";
+import { TimelineLayout } from "../timeline/src/components/timeline";
 
 export function IncidentTimeLine() {
   return (
